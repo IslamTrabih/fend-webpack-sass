@@ -1,7 +1,7 @@
 import { checkForName } from './js/nameChecker'
 import { handleSubmit } from './js/formHandler'
 
-console.log(checkForName);
+console.log(checkForName)
 
-alert("I EXIST")
+alert('Hallo World')
 console.log("CHANGE!!");

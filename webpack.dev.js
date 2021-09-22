@@ -1,13 +1,12 @@
-const path = require('path')
+const path = require("path") 
 const webpack = require('webpack')
-const HtmlWebPackPlugin = require("html-webpack-plugin")
+const  HtmlWebPackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 
 module.exports = {
-    entry: './src/client/index.js',
     mode: 'development',
-    devtool: 'source-map',
-    stats: 'verbose',
+    entry: './src/client/index.js',
     module: {
         rules: [
             {
@@ -22,6 +21,7 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
+        new BundleAnalyzerPlugin(),
         new CleanWebpackPlugin({
             // Simulate the removal of files
             dry: true,
