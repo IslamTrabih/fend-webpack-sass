@@ -3,6 +3,7 @@ const common = require('./webpack.common.js')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 
+
 module.exports = merge(common, {
     mode: 'development',
     module: {

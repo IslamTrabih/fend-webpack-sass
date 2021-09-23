@@ -3,6 +3,7 @@ const common = require('./webpack.common.js')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 
 
 module.exports = merge(common, {
@@ -18,6 +19,7 @@ module.exports = merge(common, {
         ]
     },
     plugins: [
-        new MiniCssExtractPlugin({ filename: "[name].min.css" })
+        new MiniCssExtractPlugin({ filename: "[name].min.css" }),
+        new WorkboxPlugin.GenerateSW()
     ]
 })
