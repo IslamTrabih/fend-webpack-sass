@@ -10,3 +10,8 @@ console.log(checkForName)
 
 alert('Hallo World')
 console.log("CHANGE!!");
+
+export {
+    checkForName,
+    handleSubmit
+}
