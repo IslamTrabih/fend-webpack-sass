@@ -1,28 +1,16 @@
-const path = require("path") 
-const webpack = require('webpack')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
+const { merge } = require('webpack-merge')
+const common = require('./webpack.common.js')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
 
 
-module.exports = {
-    mode: 'production',
-    entry: './src/client/index.js',
-    output: {
-        libraryTarget: 'var',
-        library: 'Client'
-    },
+module.exports = merge(common, {
     optimization: {
         minimizer: [new TerserPlugin(), new CssMinimizerWebpackPlugin()]
     },
     module: {
         rules: [
-            {
-                test: '/\.js$/',
-                exclude: /node_modules/,
-                loader: "babel-loader"
-            },
             {
                 test: /\.scss$/,
                 use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
@@ -30,10 +18,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebPackPlugin({
-            template: "./src/client/views/index.html",
-            filename: "./index.html",
-        }),
         new MiniCssExtractPlugin({ filename: "[name].min.css" })
     ]
-}
+})
